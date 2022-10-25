@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 8506188435768395269}
   - component: {fileID: 8506188435768395268}
   m_Layer: 0
-  m_Name: LED
+  m_Name: LED_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

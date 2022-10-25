@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 7503023392995122771}
   - component: {fileID: 7503023392995122768}
   m_Layer: 0
-  m_Name: Resistance
+  m_Name: Resistance_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

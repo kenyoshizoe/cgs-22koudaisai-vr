@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 2304341385728605955}
   - component: {fileID: 2304341385728605952}
   m_Layer: 0
-  m_Name: Solder
+  m_Name: SolderingWire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

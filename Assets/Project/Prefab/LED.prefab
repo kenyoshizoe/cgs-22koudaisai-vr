@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8797516036735429591}
   - component: {fileID: 8797516036735429588}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: RedPointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9130861515325154307}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.537, y: 1.14, z: -0.413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f33af005b857bef4b996aeccbab9e43a, type: 2}
     - target: {fileID: 919132149155446097, guid: 48420fe1dbaf74a4ea53509cd44d8cb4, type: 3}
       propertyPath: m_Name
-      value: Red_Light
+      value: RedLight
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 48420fe1dbaf74a4ea53509cd44d8cb4, type: 3}
       propertyPath: m_IsActive

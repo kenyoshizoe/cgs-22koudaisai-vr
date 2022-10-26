@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6603358175032564253}
   - component: {fileID: 8955161636091211479}
   m_Layer: 0
-  m_Name: Solder
+  m_Name: Soldered
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

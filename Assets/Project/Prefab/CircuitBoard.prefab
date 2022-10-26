@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3539383580318570988}
   - component: {fileID: 3469287837444229566}
   - component: {fileID: 6465148552291670128}
-  - component: {fileID: 7497872815003573578}
   - component: {fileID: 3469287837444229567}
+  - component: {fileID: 2064400824}
   m_Layer: 0
   m_Name: CircuitBoard
   m_TagString: Untagged
@@ -123,24 +123,6 @@ MonoBehaviour:
   _whenRespawned:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7497872815003573578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3035029143848925241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f86b14a27b52f4f9298c33015b5c26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transferOnSecondSelection: 0
-  _addNewPointsToFront: 0
-  _forwardElement: {fileID: 0}
-  _oneGrabTransformer: {fileID: 0}
-  _twoGrabTransformer: {fileID: 0}
-  _maxGrabPoints: -1
 --- !u!54 &3469287837444229567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,6 +139,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2064400824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3035029143848925241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1 &3744191174701860517
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +204,7 @@ MonoBehaviour:
   _maxInteractors: -1
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
-  _pointableElement: {fileID: 7497872815003573578}
+  _pointableElement: {fileID: 0}
   _rigidbody: {fileID: 3469287837444229567}
   _grabSource: {fileID: 0}
   _useClosestPointAsGrabSource: 1

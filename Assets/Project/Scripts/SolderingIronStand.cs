@@ -5,55 +5,71 @@ using UnityEngine;
 public class SolderingIronStand : MonoBehaviour
 {
     [SerializeField]
-    public Collider target;
+    Collider target;
+    [SerializeField]
+    Transform snapPosition;
+
     [SerializeField]
     bool debug = false;
     [SerializeField]
-    Material debug_normal_material;
+    Material debugNormalMaterial;
     [SerializeField]
-    Material debug_holding_material;
+    Material debugHoldableMaterial;
+    [SerializeField]
+    Material debugHoldingMaterial;
 
-    bool is_holding;
-    GameObject debug_ball;
+    bool isHoldable;
+    bool isHolding;
+
+    GameObject debugBall;
 
     void Start()
     {
         this.gameObject.GetComponent<Collider>().isTrigger = true;
-        is_holding = false;
+        isHoldable = false;
+        isHolding = false;
+
         if (debug) {
-            debug_ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            debug_ball.transform.SetParent(this.transform);
-            debug_ball.transform.localPosition = new Vector3(0.0f, 0.0f, 0.2f);
-            debug_ball.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            debug_ball.GetComponent<Renderer>().material = debug_normal_material;
+            debugBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            debugBall.transform.SetParent(this.transform);
+            debugBall.transform.localPosition = new Vector3(0.5f, 0.0f, 0.0f);
+            debugBall.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            debugBall.GetComponent<Renderer>().material = debugNormalMaterial;
         }
     }
 
     void Update()
     {
         if (debug) {
-            debug_ball.GetComponent<Renderer>().material
-                = (is_holding ? debug_holding_material : debug_normal_material);
-        }
-    }
-
-    void OnTriggerStay(Collider other) {
-        if (target == other) {
-            if (target.GetComponentInParent<OVRGrabbable>().isGrabbed) {
-                is_holding = false;
-                target.gameObject.GetComponentInParent<Rigidbody>().constraints
-                    = RigidbodyConstraints.None;
+            if (isHolding){
+                debugBall.GetComponent<Renderer>().material = debugHoldingMaterial;
+            } else if (isHoldable) {
+                debugBall.GetComponent<Renderer>().material = debugHoldableMaterial;
             } else {
-                is_holding = true;
-                target.gameObject.GetComponentInParent<Rigidbody>().constraints
-                    = RigidbodyConstraints.FreezeAll;
+                debugBall.GetComponent<Renderer>().material = debugNormalMaterial;
             }
         }
     }
 
-    void OnTriggerExit(Collider other) {
-        if (target == other) {
-            is_holding = false;
+    void OnTriggerStay(Collider other) {
+        if (other != target) return;
+
+        if (!target.GetComponentInParent<OVRGrabbable>().isGrabbed && !isHolding) {
+            isHolding = true;
+            target.GetComponentInParent<Rigidbody>().isKinematic = true;
+            target.GetComponentInParent<Rigidbody>().transform.position = snapPosition.position;
+            target.GetComponentInParent<Rigidbody>().transform.rotation = snapPosition.rotation;
         }
+    }
+
+    // For Debug
+    void OnTriggerEnter(Collider other) {
+        if (other != target) return;
+        isHoldable = true;
+    }
+    void OnTriggerExit(Collider other) {
+        if (other != target) return;
+        isHolding = false;
+        isHoldable = false;
     }
 }

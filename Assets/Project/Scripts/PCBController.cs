@@ -9,8 +9,11 @@ public class PCBController : MonoBehaviour
     [SerializeField]
     SolderHole LEDRightFootHole;
     [SerializeField]
+    GameObject LED;
+    [SerializeField]
     GameObject holderedLED;
-
+    [SerializeField]
+    GameObject holderedLEDLight;
     [SerializeField]
     SolderHole resisterLeftFootHole;
     [SerializeField]
@@ -22,6 +25,8 @@ public class PCBController : MonoBehaviour
 
     [SerializeField]
     int solderingTime = 100;
+    [SerializeField]
+    GameObject pushSwitch;
 
     bool solderCompleted = false;
 
@@ -30,6 +35,7 @@ public class PCBController : MonoBehaviour
     void Start()
     {
         holderedResister.SetActive(false);
+        holderedLED.SetActive(false);
         holes = new SolderHole[] { LEDLeftFootHole, LEDRightFootHole, resisterLeftFootHole, resisterRightFootHole };
         foreach (var hole in holes)
         {
@@ -44,6 +50,8 @@ public class PCBController : MonoBehaviour
         if (LEDLeftFootHole.footTouching && LEDRightFootHole.footTouching && !LEDLeftFootHole.isInserted)
         {
             // snap LED
+            Object.Destroy(LED);
+            holderedLED.SetActive(true);
             LEDLeftFootHole.isInserted = true;
             LEDRightFootHole.isInserted = true;
         }
@@ -70,7 +78,7 @@ public class PCBController : MonoBehaviour
 
         if (solderCompleted)
         {
-            // Activate LED?
+            holderedLEDLight.SetActive(pushSwitch.GetComponent<Switch>().isPushed);
         }
     }
 }

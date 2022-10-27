@@ -21,12 +21,14 @@ public class SolderHole : MonoBehaviour
     Material debugGreenMaterial;
     [SerializeField]
     Material debugBlueMaterial;
+    [HideInInspector]
     public float solderingTime;
     float t;
-
+    [HideInInspector]
     public bool isInserted;
 
     bool m_isSoldered;
+    [HideInInspector]
     public bool isSoldered
     {
         get { return m_isSoldered; }
@@ -36,7 +38,7 @@ public class SolderHole : MonoBehaviour
             m_isSoldered = value;
         }
     }
-
+    [HideInInspector]
     public bool footTouching = false;
     bool solderingIronTouching = false;
     bool solderingWireTouching = false;

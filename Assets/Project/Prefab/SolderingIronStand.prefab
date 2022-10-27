@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   snapPosition: {fileID: 7111257913311510912}
-  debug: 1
+  debug: 0
   debugNormalMaterial: {fileID: 2100000, guid: 93a5d573aac7c3c43931ea1cf4fa4781, type: 2}
   debugHoldableMaterial: {fileID: 2100000, guid: 0f7839ef50332884baeff161f6443fc3, type: 2}
   debugHoldingMaterial: {fileID: 2100000, guid: 5045c9502ab1dd74aac6f81b4bf014a6, type: 2}
@@ -288,7 +288,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7111257914826182831}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

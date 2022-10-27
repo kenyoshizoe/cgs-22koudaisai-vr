@@ -9,9 +9,17 @@ public class PCBController : MonoBehaviour
     [SerializeField]
     SolderHole LEDRightFootHole;
     [SerializeField]
-    SolderHole ResisterLeftFootHole;
+    GameObject holderedLED;
+
     [SerializeField]
-    SolderHole ResisterRightFootHole;
+    SolderHole resisterLeftFootHole;
+    [SerializeField]
+    SolderHole resisterRightFootHole;
+    [SerializeField]
+    GameObject resister;
+    [SerializeField]
+    GameObject holderedResister;
+
     [SerializeField]
     int solderingTime = 100;
 
@@ -21,9 +29,11 @@ public class PCBController : MonoBehaviour
 
     void Start()
     {
-        holes = new SolderHole[] { LEDLeftFootHole, LEDRightFootHole, ResisterLeftFootHole, ResisterRightFootHole };
+        holderedResister.SetActive(false);
+        holes = new SolderHole[] { LEDLeftFootHole, LEDRightFootHole, resisterLeftFootHole, resisterRightFootHole };
         foreach (var hole in holes)
         {
+            hole.isSoldered = false;
             hole.solderingTime = solderingTime;
         }
     }
@@ -31,17 +41,20 @@ public class PCBController : MonoBehaviour
     void Update()
     {
         // check insert and snap
-        if (LEDLeftFootHole.footTouching && LEDRightFootHole.footTouching)
+        if (LEDLeftFootHole.footTouching && LEDRightFootHole.footTouching && !LEDLeftFootHole.isInserted)
         {
-            // snap led
+            // snap LED
             LEDLeftFootHole.isInserted = true;
             LEDRightFootHole.isInserted = true;
         }
-        if (ResisterLeftFootHole.footTouching && ResisterRightFootHole.footTouching)
+        if (resisterLeftFootHole.footTouching && resisterRightFootHole.footTouching && !resisterLeftFootHole.isInserted)
         {
             // snap resister
-            ResisterLeftFootHole.isInserted = true;
-            ResisterRightFootHole.isInserted = true;
+            Object.Destroy(resister);
+            holderedResister.SetActive(true);
+
+            resisterLeftFootHole.isInserted = true;
+            resisterRightFootHole.isInserted = true;
         }
 
         // check solder completed

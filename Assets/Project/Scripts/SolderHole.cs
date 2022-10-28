@@ -4,28 +4,19 @@ using UnityEngine;
 
 public class SolderHole : MonoBehaviour
 {
-    [SerializeField]
-    List<Collider> targetFootColliders;
-    [SerializeField]
-    Collider solderingIron;
-    [SerializeField]
-    Collider solderingWire;
-    [SerializeField]
-    GameObject solder;
-
-    [SerializeField]
-    bool debug;
-    [SerializeField]
-    Material debugRedMaterial;
-    [SerializeField]
-    Material debugGreenMaterial;
-    [SerializeField]
-    Material debugBlueMaterial;
-    [HideInInspector]
-    public float solderingTime;
+    [SerializeField] List<Collider> targetFootColliders;
+    [SerializeField] Collider solderingIron;
+    [SerializeField] Collider solderingWire;
+    [SerializeField] GameObject solder;
+    [SerializeField] AudioClip sound;
+    AudioSource source;
+    [SerializeField] bool debug;
+    [SerializeField] Material debugRedMaterial;
+    [SerializeField] Material debugGreenMaterial;
+    [SerializeField] Material debugBlueMaterial;
+    [HideInInspector] public float solderingTime;
     float t;
-    [HideInInspector]
-    public bool isInserted;
+    [HideInInspector] public bool isInserted;
 
     bool m_isSoldered;
     [HideInInspector]
@@ -43,11 +34,14 @@ public class SolderHole : MonoBehaviour
     bool solderingIronTouching = false;
     bool solderingWireTouching = false;
     GameObject debugBall;
+    bool soundPlayed = false;
 
     void Start()
     {
         isInserted = false;
         isSoldered = false;
+        source = GetComponent<AudioSource>();
+
         if (debug)
         {
             debugBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -86,10 +80,17 @@ public class SolderHole : MonoBehaviour
                 isSoldered = true;
             }
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            if (!soundPlayed)
+            {
+                source.PlayOneShot(sound);
+                soundPlayed = true;
+            }
+
         }
         else
         {
             t = 0;
+            soundPlayed = false;
             gameObject.GetComponentInChildren<ParticleSystem>().Stop();
         }
     }

@@ -16,6 +16,7 @@ public class PCBController : MonoBehaviour
     [SerializeField] GameObject holderedResister;
 
     [SerializeField] int solderingTime = 100;
+    [SerializeField] float solderConsumptionSpeed = 0.01f;
     [SerializeField] GameObject pushSwitch;
 
     [SerializeField] TextMeshProUGUI guideText = default;
@@ -41,6 +42,7 @@ public class PCBController : MonoBehaviour
         {
             hole.isSoldered = false;
             hole.solderingTime = solderingTime;
+            hole.solderConsumptionSpeed = solderConsumptionSpeed;
         }
     }
 

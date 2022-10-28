@@ -15,6 +15,8 @@ public class SolderHole : MonoBehaviour
     [SerializeField] Material debugGreenMaterial;
     [SerializeField] Material debugBlueMaterial;
     [HideInInspector] public float solderingTime;
+    [HideInInspector] public float solderConsumptionSpeed;
+
     float t;
     [HideInInspector] public bool isInserted;
 
@@ -79,17 +81,19 @@ public class SolderHole : MonoBehaviour
             {
                 isSoldered = true;
             }
+            // Sound
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
             if (!soundPlayed)
             {
                 source.PlayOneShot(sound);
                 soundPlayed = true;
             }
-
+            // Cousumption Soldering Wire
+            solderingWire.gameObject.transform.parent.localPosition -= new Vector3(0, solderConsumptionSpeed * Time.deltaTime, 0);
+            solderingWire.gameObject.transform.parent.localScale -= new Vector3(0, solderConsumptionSpeed * Time.deltaTime, 0);
         }
         else
         {
-            t = 0;
             soundPlayed = false;
             gameObject.GetComponentInChildren<ParticleSystem>().Stop();
         }

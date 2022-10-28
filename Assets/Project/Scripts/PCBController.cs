@@ -1,34 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PCBController : MonoBehaviour
 {
-    [SerializeField]
-    SolderHole LEDLeftFootHole;
-    [SerializeField]
-    SolderHole LEDRightFootHole;
-    [SerializeField]
-    GameObject LED;
-    [SerializeField]
-    GameObject holderedLED;
-    [SerializeField]
-    GameObject holderedLEDLight;
-    [SerializeField]
-    SolderHole resisterLeftFootHole;
-    [SerializeField]
-    SolderHole resisterRightFootHole;
-    [SerializeField]
-    GameObject resister;
-    [SerializeField]
-    GameObject holderedResister;
+    [SerializeField] SolderHole LEDLeftFootHole;
+    [SerializeField] SolderHole LEDRightFootHole;
+    [SerializeField] GameObject LED;
+    [SerializeField] GameObject holderedLED;
+    [SerializeField] GameObject holderedLEDLight;
+    [SerializeField] SolderHole resisterLeftFootHole;
+    [SerializeField] SolderHole resisterRightFootHole;
+    [SerializeField] GameObject resister;
+    [SerializeField] GameObject holderedResister;
 
-    [SerializeField]
-    int solderingTime = 100;
-    [SerializeField]
-    GameObject pushSwitch;
+    [SerializeField] int solderingTime = 100;
+    [SerializeField] GameObject pushSwitch;
+
+    [SerializeField] TextMeshProUGUI guideText = default;
 
     bool solderCompleted = false;
+
+    enum GameState
+    {
+        Start, ResisterInserted, LEDInserted, Soldered, Cleared
+    }
+    GameState gameState = GameState.Start;
 
     SolderHole[] holes;
 
@@ -79,6 +77,36 @@ public class PCBController : MonoBehaviour
         if (solderCompleted)
         {
             holderedLEDLight.SetActive(pushSwitch.GetComponent<Switch>().isPushed);
+        }
+
+        switch (gameState)
+        {
+            case GameState.Start:
+                guideText.text = "抵抗を基板に取り付けてください";
+                if (resisterLeftFootHole.isInserted){
+                    gameState = GameState.ResisterInserted;
+                }
+                break;
+            case GameState.ResisterInserted:
+                guideText.text = "LEDを基板に取り付けてください";
+                if (LEDLeftFootHole.isInserted)
+                    gameState = GameState.LEDInserted;
+                break;
+            case GameState.LEDInserted:
+                guideText.text = "基板を裏返し、はんだ付けしてください";
+                if (solderCompleted)
+                    gameState = GameState.Soldered;
+                break;
+            case GameState.Soldered:
+                guideText.text = "基盤表側のスイッチを押して、LEDを点灯させてください";
+                if (pushSwitch.GetComponent<Switch>().isPushed)
+                    gameState = GameState.Cleared;
+                break;
+            case GameState.Cleared:
+                guideText.text = "ゲームクリア！ 基板の完成です！";
+                break;
+            default:
+                break;
         }
     }
 }

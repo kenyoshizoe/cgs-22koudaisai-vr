@@ -1247,9 +1247,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 71b623eccde6e7b4eb2ab774e2ca41b7, type: 3}
     - target: {fileID: 3500992018356717913, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500992018356717913, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: sound
       value: 
       objectReference: {fileID: 8300000, guid: 71b623eccde6e7b4eb2ab774e2ca41b7, type: 3}
+    - target: {fileID: 3500992018813916203, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3500992018813916203, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: sound
       value: 

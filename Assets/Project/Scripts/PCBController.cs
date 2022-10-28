@@ -19,6 +19,8 @@ public class PCBController : MonoBehaviour
     [SerializeField] GameObject pushSwitch;
 
     [SerializeField] TextMeshProUGUI guideText = default;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip[] voices;
 
     bool solderCompleted = false;
 
@@ -83,24 +85,35 @@ public class PCBController : MonoBehaviour
         {
             case GameState.Start:
                 guideText.text = "抵抗を基板に取り付けてください";
-                if (resisterLeftFootHole.isInserted){
+                if (resisterLeftFootHole.isInserted)
+                {
+                    source.PlayOneShot(voices[1]);
                     gameState = GameState.ResisterInserted;
                 }
                 break;
             case GameState.ResisterInserted:
                 guideText.text = "LEDを基板に取り付けてください";
                 if (LEDLeftFootHole.isInserted)
+                {
+                    source.PlayOneShot(voices[2]);
                     gameState = GameState.LEDInserted;
+                }
                 break;
             case GameState.LEDInserted:
                 guideText.text = "基板を裏返し、はんだ付けしてください";
                 if (solderCompleted)
+                {
+                    source.PlayOneShot(voices[3]);
                     gameState = GameState.Soldered;
+                }
                 break;
             case GameState.Soldered:
                 guideText.text = "基盤表側のスイッチを押して、LEDを点灯させてください";
                 if (pushSwitch.GetComponent<Switch>().isPushed)
+                {
+                    source.PlayOneShot(voices[4]);
                     gameState = GameState.Cleared;
+                }
                 break;
             case GameState.Cleared:
                 guideText.text = "ゲームクリア！ 基板の完成です！";

@@ -1314,6 +1314,18 @@ PrefabInstance:
       propertyPath: sound
       value: 
       objectReference: {fileID: 8300000, guid: 71b623eccde6e7b4eb2ab774e2ca41b7, type: 3}
+    - target: {fileID: 3500992018233043750, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: targetFootColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500992018233043750, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: targetFootColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1307677757}
+    - target: {fileID: 3500992018233043750, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: targetFootColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 1307677756}
     - target: {fileID: 3500992018356717913, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: debug
       value: 0
@@ -1334,6 +1346,18 @@ PrefabInstance:
       propertyPath: sound
       value: 
       objectReference: {fileID: 8300000, guid: 71b623eccde6e7b4eb2ab774e2ca41b7, type: 3}
+    - target: {fileID: 3500992018973145987, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: targetFootColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500992018973145987, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: targetFootColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1307677757}
+    - target: {fileID: 3500992018973145987, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+      propertyPath: targetFootColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 1307677756}
     - target: {fileID: 4994336017837935048, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1348,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 341035458}
     - target: {fileID: 4994336017837935049, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: solderingTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4994336017837935049, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: voices.Array.size
@@ -1376,7 +1400,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7d34b6128c4ee8545a189c8579d7dd11, type: 3}
     - target: {fileID: 4994336017837935049, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: solderConsumptionSpeed
-      value: 0.01
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 5939381505294186643, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
       propertyPath: targets.Array.data[0]
@@ -1534,6 +1558,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &1307677756 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 6891693525832178767, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+  m_PrefabInstance: {fileID: 1307677752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1307677757 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5612561853770337334, guid: 543a1fe66e3b06207b9094f3b24375b4, type: 3}
+  m_PrefabInstance: {fileID: 1307677752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1703531123
 GameObject:
   m_ObjectHideFlags: 0
